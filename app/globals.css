@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+:root {
+  --navy: #0b1f33;
+  --navy-mid: #14304a;
+  --navy-soft: #1e3a5f;
+  --clinical: #f4f7fa;
+  --clinical-white: #ffffff;
+  --teal: #0d9488;
+  --teal-deep: #0f766e;
+  --teal-soft: #ccfbf1;
+  --slate: #475569;
+  --slate-muted: #64748b;
+  --border: #d5dee8;
+  --background: var(--clinical);
+  --foreground: var(--navy);
+  --radius: 0.5rem;
+}
+
+@theme inline {
+  --color-navy: var(--navy);
+  --color-navy-mid: var(--navy-mid);
+  --color-navy-soft: var(--navy-soft);
+  --color-clinical: var(--clinical);
+  --color-clinical-white: var(--clinical-white);
+  --color-teal: var(--teal);
+  --color-teal-deep: var(--teal-deep);
+  --color-teal-soft: var(--teal-soft);
+  --color-slate: var(--slate);
+  --color-slate-muted: var(--slate-muted);
+  --color-border: var(--border);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-teal-50: #f0fdfa;
+  --color-teal-600: #0d9488;
+  --color-teal-700: #0f766e;
+  --color-teal-800: #115e59;
+  --color-slate-400: #94a3b8;
+  --color-slate-600: #475569;
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--teal) 35%, white);
+  color: var(--navy);
+}
+
+.font-display {
+  font-family: var(--font-display), "Segoe UI", sans-serif;
+}
+
+.font-mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+/* Atmosphere — clinical grid + soft teal wash (not flat white) */
+.surface-clinical {
+  background-color: var(--clinical);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 10% -10%, color-mix(in oklab, var(--teal) 12%, transparent), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 100% 0%, color-mix(in oklab, var(--navy) 8%, transparent), transparent 50%),
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: auto, auto, 48px 48px, 48px 48px;
+  background-position: 0 0, 0 0, -1px -1px, -1px -1px;
+}
+
+.hero-panel {
+  background:
+    linear-gradient(
+      135deg,
+      var(--navy) 0%,
+      var(--navy-mid) 42%,
+      color-mix(in oklab, var(--navy-soft) 70%, var(--teal-deep)) 100%
+    );
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 80% 20%, color-mix(in oklab, var(--teal) 28%, transparent), transparent 40%),
+    linear-gradient(90deg, transparent 0%, transparent 49%, color-mix(in oklab, white 4%, transparent) 50%, transparent 51%);
+  background-size: auto, 24px 100%;
+  pointer-events: none;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rule-draw {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+.animate-rise {
+  animation: rise-in 0.7s ease-out both;
+}
+
+.animate-rise-delay {
+  animation: rise-in 0.7s ease-out 0.12s both;
+}
+
+.animate-rise-delay-2 {
+  animation: rise-in 0.7s ease-out 0.24s both;
+}
+
+.brand-rule {
+  height: 2px;
+  width: 3.5rem;
+  background: linear-gradient(90deg, var(--teal), transparent);
+  transform-origin: left;
+  animation: rule-draw 0.8s ease-out 0.2s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise,
+  .animate-rise-delay,
+  .animate-rise-delay-2,
+  .brand-rule {
+    animation: none !important;
+  }
+}

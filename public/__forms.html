@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>PNWX form detection</title>
+  </head>
+  <body>
+    <!-- Static skeleton so Netlify detects forms at build time -->
+    <form name="quote" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="quote" />
+      <input name="bot-field" />
+      <input type="text" name="name" />
+      <input type="text" name="facility" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="stockNumbers" />
+      <input type="text" name="qty" />
+      <textarea name="notes"></textarea>
+      <textarea name="rfqLines"></textarea>
+    </form>
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="contact" />
+      <input name="bot-field" />
+      <input type="text" name="name" />
+      <input type="text" name="facility" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <input type="text" name="stockNumbers" />
+      <input type="text" name="qty" />
+      <textarea name="notes"></textarea>
+      <textarea name="rfqLines"></textarea>
+    </form>
+  </body>
+</html>
